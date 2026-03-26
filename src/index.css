@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* KaTeX CSS is imported in main.tsx to ensure correct load order */
+
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    @apply bg-slate-50 text-slate-900 font-sans;
+    min-height: 100vh;
+  }
+
+  /* Smooth scrollbar */
+  :root {
+    --scrollbar-thumb: #cbd5e1;
+    --scrollbar-track: transparent;
+  }
+  ::-webkit-scrollbar       { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: var(--scrollbar-track); }
+  ::-webkit-scrollbar-thumb { background: var(--scrollbar-thumb); border-radius: 3px; }
+}
+
+@layer components {
+  /* Range input — uniform cross-browser look */
+  .range-input {
+    @apply w-full appearance-none bg-transparent cursor-pointer;
+  }
+  .range-input::-webkit-slider-runnable-track {
+    @apply h-1.5 rounded-full bg-slate-200;
+  }
+  .range-input::-webkit-slider-thumb {
+    @apply appearance-none w-5 h-5 rounded-full bg-brand-600 border-2 border-white shadow-md;
+    margin-top: -5px;
+    transition: background 0.15s, transform 0.15s;
+  }
+  .range-input::-webkit-slider-thumb:hover {
+    @apply bg-brand-700 scale-110;
+  }
+  .range-input::-moz-range-track { @apply h-1.5 rounded-full bg-slate-200; }
+  .range-input::-moz-range-thumb  {
+    @apply w-5 h-5 rounded-full bg-brand-600 border-2 border-white shadow-md;
+    transition: background 0.15s;
+  }
+
+  /* Graph canvas container */
+  .graph-container {
+    @apply relative bg-white rounded-xl overflow-hidden shadow-panel border border-slate-100;
+  }
+
+  /* Feedback states */
+  .feedback-success { @apply bg-emerald-50 border border-emerald-200 text-emerald-800; }
+  .feedback-error   { @apply bg-red-50    border border-red-200    text-red-800; }
+  .feedback-info    { @apply bg-blue-50   border border-blue-200   text-blue-800; }
+  .feedback-neutral { @apply bg-slate-50  border border-slate-200  text-slate-700; }
+}

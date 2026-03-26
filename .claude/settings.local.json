@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(find 'd:/apps matematicas/src' -newer 'd:/apps matematicas/package.json' -name *.tsx -o -newer 'd:/apps matematicas/package.json' -name *.ts -o -newer 'd:/apps matematicas/package.json' -name *.css)"
+    ]
+  }
+}
